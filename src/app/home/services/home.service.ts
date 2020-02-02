@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HomeRestService } from './home-rest.service';
 import { Observable } from 'rxjs';
-import { CharactersResponseModel } from '../home/integration/response/characters-response.model';
+import { CharactersResponseModel } from '../integration/response/characters-response.model';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CharactersResponseModel } from '../home/integration/response/characters-response.model';
+import { CharactersResponseModel } from '../integration/response/characters-response.model';
 
 @Injectable({
 	providedIn: 'root'
