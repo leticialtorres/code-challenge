@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HomeRestService } from './home-rest.service';
 import { Observable } from 'rxjs';
+import { CharactersResponseModel } from '../home/integration/response/characters-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class HomeService {
 		private rest: HomeRestService
 	) { }
 
-	getAllCaracters(): Observable<any[]> {
+	getAllCaracters(): Observable<Array<CharactersResponseModel>> {
 		return this.rest.getAllCaracters();
 	}
 
