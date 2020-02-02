@@ -19,7 +19,12 @@ export class HomeComponent implements OnInit {
 
   getAllCaracters(): void {
     this.service.getAllCaracters().subscribe(res => {
-      this.caracters = res;
+      this.caracters = res.slice(0, 4);
     });
   }
+
+  getDetailCharacter(id: string): void {
+    
+  }
+
 }
