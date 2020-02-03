@@ -6,7 +6,7 @@ import { CharacterModel } from '../models/character.model';
 export class CharacterMapper {
 	static mapToCharacterModel(response: CharacterResponseModel): CharacterModel {
 		return Builder<CharacterModel>()
-			.char_id(response.char_id)
+			.id(response.char_id)
 			.name(response.name)
 			.birthday(response.birthday)
 			.img(response.img)
@@ -20,7 +20,7 @@ export class CharacterMapper {
 	static mapToArrayCharacterModel(response: Array<CharacterResponseModel>): Array<CharacterModel> {
 		return response.map(item => {
 				return Builder<CharacterModel>()
-					.char_id(item.char_id)
+					.id(item.char_id)
 					.name(item.name)
 					.birthday(item.birthday)
 					.img(item.img)

@@ -31,7 +31,7 @@ export class CharacterDetailStub {
 
 	static mockCharacterModel(): CharacterModel {
 		return Builder<CharacterModel>()
-		.char_id(1)
+		.id(1)
 		.img('')
 		.name('Jonh')
 		.nickname('Josua')

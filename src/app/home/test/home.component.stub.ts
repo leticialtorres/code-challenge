@@ -19,7 +19,7 @@ export class HomeComponentStub {
 
 	static mockArrayCharacterModel(): Array<CharacterModel> {
 		return [Builder<CharacterModel>()
-			.char_id(1)
+			.id(1)
 			.img('')
 			.name('Jonh')
 			.nickname('Josua')
@@ -28,7 +28,7 @@ export class HomeComponentStub {
 			.status('Alive')
 			.build(),
 			Builder<CharacterModel>()
-			.char_id(1)
+			.id(1)
 			.img('')
 			.name('Jonathan')
 			.nickname('Josh')

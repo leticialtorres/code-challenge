@@ -1,7 +1,7 @@
 <div *ngIf="isCharactersLoaded()" class="row mt-5 mb-5">
   <div class="col-md-3 mt-3" *ngFor="let item of characters">
       <div class="card-deck">
-            <div class="card card-pointer" [routerLink]="['/character-detail', item?.char_id]">
+            <div class="card card-pointer" [routerLink]="['/character-detail', item?.id]">
 				<figure class="text-center">
 					<img src="{{item.img}}" [ngClass]="setClassDeadOrAlive(item?.status)"  class="card-img-top figure mb-3 mt-3 rounded">
 				</figure>
