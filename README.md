@@ -4,24 +4,32 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+For install all dependencies for project, run in terminal `npm install` before all other commands.
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Run `ng build` for generate a prod version for deploy the app, inside that dist folder, if running with success, the version will be generated.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm run test` for run the unit tests.
 
-## Build
+Run `npm run coverage` for run the unit tests.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run lint` for run the lint and fix all possible issues for lint
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Solution
+In this application I use a simple solution to list a limited character by API https://www.breakingbadapi.com/:
+* Get a limited characters
+* Detail Page with Angular Routes
+* Lazy-Loading for a components
+* Can update a quantity of character to list in environment file (change variable `quantityOfCharacters`)
 
-## Running end-to-end tests
+## Highlights
+* Unit Test
+* Angular Components
+* Angular Routes 
+* Lazy-Loading
+* Builder-Pattern
+* RxJS
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
