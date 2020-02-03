@@ -11,15 +11,15 @@ import { CharacterMapper } from '../../mapper/character.mapper';
 describe('HomeService =>', () => {
 	let service: HomeService;
 	let restService: HomeRestService;
- beforeEach(() => {
-	TestBed.configureTestingModule({
-		providers: [
-			HttpClientModule,
-			{ provide: HomeRestService, useValue: {getAllCharacters: {}, getCharactersById: {} } }
-		]
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [
+				HttpClientModule,
+				{ provide: HomeRestService, useValue: {getAllCharacters: {}, getCharactersById: {} } }
+			]
 		});
-	service = TestBed.get(HomeService);
-	restService = TestBed.get(HomeRestService);
+		service = TestBed.get(HomeService);
+		restService = TestBed.get(HomeRestService);
 	});
 
 	describe('Given that this service is call => ', () => {

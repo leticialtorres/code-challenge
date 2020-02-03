@@ -1,102 +1,83 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { CharacterDetailComponent } from '../character-detail.component';
 import { CharacterDetailStub as stub } from './character-detail.stub';
 import { CharacterDetailRoutingModule } from '../character-detail-routing.module';
 import { HomeService } from 'src/app/home/services/home.service';
-import { CharacterMapper } from 'src/app/home/mapper/character.mapper';
-import { ChangeDetectorRef } from '@angular/core';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { CharacterDetailModule } from '../character-detail.module';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute } from '@angular/router';
 
-xdescribe('CharacterDetailComponent =>', () => {
-  let component: CharacterDetailComponent;
-  let fixture: ComponentFixture<CharacterDetailComponent>;
-  let service: HomeService;
+describe('CharacterDetailComponent =>', () => {
+	let component: CharacterDetailComponent;
+	let fixture: ComponentFixture<CharacterDetailComponent>;
+	let service: HomeService;
 
-  beforeEach(async(() => {
-	TestBed.configureTestingModule({
-	  declarations: [
-			CharacterDetailComponent
-		],
-	  imports: [
-			CharacterDetailComponent,
-			BrowserDynamicTestingModule,
-			CharacterDetailRoutingModule,
-			CharacterDetailModule,
-			RouterTestingModule,
-			HttpClientModule,
-			ActivatedRoute,
-			HttpClientTestingModule
-		],
-		providers: [
-			{ provide: HomeService, useClass: stub },
-			ChangeDetectorRef
-		]
-	})
-	.compileComponents()
-	.then(() => {
-		fixture = TestBed.createComponent(CharacterDetailComponent);
-		service = TestBed.get(HomeService);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [
+				CharacterDetailComponent
+			],
+			imports: [
+				CharacterDetailRoutingModule,
+				RouterTestingModule,
+				HttpClientModule,
+				HttpClientTestingModule
+			],
+			providers: [
+				{ provide: HomeService, useClass: stub },
+				ChangeDetectorRef
+			]
+		})
+		.compileComponents()
+		.then(() => {
+			fixture = TestBed.createComponent(CharacterDetailComponent);
+			service = TestBed.get(HomeService);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+	}));
+	describe('Given that this component to have been called => ', () => {
+		describe('THEN loaded one character => ', () => {
+			beforeEach(() => {
+				spyOn(component, 'setLoadingMessage');
+				spyOn(service, 'getCharacterById').and.returnValue(of(stub.mockCharacterModel()));
+				component.ngOnInit();
+				fixture.detectChanges();
+			});
+			it('THEN this component have been defined', () => {
+				expect(component).toBeDefined();
+			});
+			it('THEN the varible [character] to have been defined', () => {
+				expect(component.character).toBeDefined();
+			});
+			it('THEN the method [isCharacterDefined] return TRUE' , () => {
+				expect(component.isCharacterDefined()).toBe(true);
+			});
+		});
+		describe('THEN have error featch data => ', () => {
+			beforeEach(() => {
+				spyOn(component, 'setLoadingMessage');
+				spyOn(service, 'getCharacterById').and.returnValue(throwError(stub.mockErrorResponse()));
+				component.ngOnInit();
+			});
+			it('THEN  the method [isCharacterDefined] return TRUE' , () => {
+				expect(component.isCharacterDefined()).toBe(false);
+			});
+			it('THEN the variable [infoMessage] dont have a text loading' , () => {
+				expect(component.infoMessage).not.toBe(stub.mockLoadingMessage());
+			});
+		});
 	});
-
-
-  }));
-
-//   beforeEach(() => {
-
-//   });
-
-  it('component to be defined', () => {
-	expect(component).toBeDefined();
-  });
-  describe('OnInit should be get characterById', () => {
-	beforeEach(() => {
-
-		// spyOn(service, 'getCharacterById').and.callFake(() => of(stub.mockCharacterResponseModel()));
-		spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel());
-
+	describe('Given that call the method [setClassDeadOrAlive] with DEAD value =>', () => {
+		beforeEach(() => {
+			component.setClassDeadOrAlive(stub.mockAliveText());
+		});
+		it('then the result is a string ALIVE in LowerCase', () => {
+			expect(component.setClassDeadOrAlive(stub.mockAliveText())).toBe(stub.mockAliveText().toLowerCase());
+		});
 	});
-	it('=> OnInit should be call method [getCharacterById] ', () => {
-		expect(service.getCharacterById).toHaveBeenCalled();
-	});
-  });
-  describe('Given that call the method [isDead] =>', () => {
-	beforeEach(() => {
-
-	});
-	it('then the result is a string ALIVE', () => {
-		expect(service.getCharacterById).toHaveBeenCalled();
-	});
-  });
-  describe('Given that call the method [isDead] =>', () => {
-	beforeEach(() => {
-
-	});
-	it('then the result is a string DECREASE', () => {
-		expect(service.getCharacterById).toHaveBeenCalled();
-	});
-  });
-
-  describe('Given that call the method [characterDefined] =>', () => {
-	beforeEach(() => {
-
-	});
-	it('then [character] NOT DEFINED return FALSE', () => {
-		expect(service.getCharacterById).toHaveBeenCalled();
-	});
-	it('then [character] DEFINED return TRUE', () => {
-		expect(service.getCharacterById).toHaveBeenCalled();
-	});
-  });
-
 });

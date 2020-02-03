@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { HomeRestService } from './home-rest.service';
-import { CharacterResponseModel } from '../integration/response/characters-response.model';
 import { CharacterModel } from '../models/character.model';
 import { CharacterMapper } from '../mapper/character.mapper';
 
@@ -17,8 +16,10 @@ export class HomeService {
 		private rest: HomeRestService
 	) { }
 
-	getAllCharacters(): Observable<Array<CharacterResponseModel>> {
-		return this.rest.getAllCharacters();
+	getAllCharacters(): Observable<Array<CharacterModel>> {
+		return this.rest.getAllCharacters().pipe(
+			map(res => CharacterMapper.mapToArrayCharacterModel(res))
+		);
 	}
 
 	getCharacterById(id: string): Observable<CharacterModel> {

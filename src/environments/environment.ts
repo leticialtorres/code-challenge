@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://www.breakingbadapi.com/api'
+  apiURL: 'https://www.breakingbadapi.com/api',
+  quantityOfCharacters: 8
 };
 
 /*

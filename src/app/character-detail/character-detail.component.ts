@@ -13,6 +13,7 @@ import { HomeService } from '../home/services/home.service';
 })
 export class CharacterDetailComponent implements OnInit {
 	character: CharacterModel;
+	infoMessage: string;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class CharacterDetailComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.setLoadingMessage();
 		this.route.paramMap
 		.pipe(switchMap(params => {
 			const id = String(params.get('id'));
@@ -29,15 +31,21 @@ export class CharacterDetailComponent implements OnInit {
 		.subscribe(characterResponse => {
 			this.character = characterResponse;
 			this.changeDetector.detectChanges();
+		}, err => {
+			this.character = null;
+			this.infoMessage = `Error featching record - ${err.message}`;
 		});
 	}
 
-	isDead(dead: string): string {
-		return dead;
+	setClassDeadOrAlive(dead: string): string {
+		return dead.toLowerCase();
 	}
 
-	characterDefined(): boolean {
+	isCharacterDefined(): boolean {
 		return !!this.character;
 	}
 
+	setLoadingMessage(): void {
+		this.infoMessage = 'Loading...';
+	}
 }

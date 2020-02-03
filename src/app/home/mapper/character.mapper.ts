@@ -16,4 +16,19 @@ export class CharacterMapper {
 			.occupation(response.occupation)
 			.build();
 	}
+
+	static mapToArrayCharacterModel(response: Array<CharacterResponseModel>): Array<CharacterModel> {
+		return response.map(item => {
+				return Builder<CharacterModel>()
+					.char_id(item.char_id)
+					.name(item.name)
+					.birthday(item.birthday)
+					.img(item.img)
+					.status(item.status)
+					.nickname(item.nickname)
+					.portrayed(item.portrayed)
+					.occupation(item.occupation)
+					.build();
+			});
+	}
 }
