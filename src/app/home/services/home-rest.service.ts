@@ -18,7 +18,9 @@ export class HomeRestService {
 
 	getAllCharacters(): Observable<Array<CharacterResponseModel>> {
 		return of({})
-		.pipe( res => this.httpClient.get<Array<CharacterResponseModel>>(`${environment.apiURL}/characters?limit=${environment.quantityOfCharacters}`));
+		.pipe( res => {
+			return this.httpClient.get<Array<CharacterResponseModel>>(`${environment.apiURL}/characters?limit=${environment.quantityOfCharacters}`);
+		});
 	}
 
 	getCharactersById(id: string): Observable<Array<CharacterResponseModel>> {
