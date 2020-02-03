@@ -6,7 +6,7 @@ describe('PaginationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PaginationService = TestBed.get(PaginationService);
-    expect(service).toBeTruthy();
+	const service: PaginationService = TestBed.get(PaginationService);
+	expect(service).toBeTruthy();
   });
 });

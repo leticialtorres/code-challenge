@@ -1,30 +1,33 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { CharactersResponseModel } from "./integration/response/characters-response.model";
-import { HomeService } from "./../services/home.service";
+import { CharacterResponseModel } from './integration/response/characters-response.model';
+import { HomeService } from './services/home.service';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.sass"]
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-  caracters: Array<CharactersResponseModel>;
+	characters: Array<CharacterResponseModel>;
 
-  constructor(private service: HomeService) {}
+	constructor(private service: HomeService) {}
 
-  ngOnInit() {
-    this.getAllCaracters();
-  }
+	ngOnInit() {
+		this.getAllCaracters();
+	}
 
-  getAllCaracters(): void {
-    this.service.getAllCaracters().subscribe(res => {
-      this.caracters = res.slice(0, 4);
-    });
-  }
+	getAllCaracters(): void {
+		this.service.getAllCharacters().subscribe(res => {
+			this.characters = res.slice(0, 8);
+		});
+	}
 
-  getDetailCharacter(id: string): void {
-    
-  }
+	charactersLoaded(): boolean {
+		return !!this.characters;
+	}
 
+	isDead(dead: string): string {
+		return dead;
+	}
 }
