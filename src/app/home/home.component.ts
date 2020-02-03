@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CharacterResponseModel } from './integration/response/characters-response.model';
 import { HomeService } from './services/home.service';
+import { CharacterModel } from './models/character.model';
 
 @Component({
 	selector: 'app-home',
@@ -9,25 +9,36 @@ import { HomeService } from './services/home.service';
 	styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-	characters: Array<CharacterResponseModel>;
+	characters: Array<CharacterModel>;
+	infoMessage: string = "";
 
-	constructor(private service: HomeService) {}
+	constructor(
+		private service: HomeService
+	) {}
 
 	ngOnInit() {
+		this.setLoadingMessage();
 		this.getAllCaracters();
 	}
 
 	getAllCaracters(): void {
 		this.service.getAllCharacters().subscribe(res => {
-			this.characters = res.slice(0, 8);
+			this.characters = res;
+		}, err => {
+			this.characters = null;
+			this.infoMessage = `Error featching records - ${err.message}`;
 		});
 	}
 
-	charactersLoaded(): boolean {
+	isCharactersLoaded(): boolean {
 		return !!this.characters;
 	}
 
-	isDead(dead: string): string {
-		return dead;
+	setClassDeadOrAlive(dead: string): string {
+		return dead.toLowerCase();
+	}
+
+	setLoadingMessage(): void {
+		this.infoMessage = "Loading...";
 	}
 }
