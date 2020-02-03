@@ -3,7 +3,6 @@ import { Builder } from 'builder-pattern';
 import { CharacterResponseModel } from './../../home/integration/response/characters-response.model';
 import { CharacterModel } from 'src/app/home/models/character.model';
 
-
 export class CharacterDetailStub {
 	static mockCharacterResponseModel(): Array<CharacterResponseModel> {
 		return [Builder<CharacterResponseModel>()
@@ -15,7 +14,7 @@ export class CharacterDetailStub {
 		.portrayed('Key')
 		.status('Alive')
 		.build()];
-	}
+	};
 
 	static mockCharacterModel(): CharacterModel {
 		return Builder<CharacterModel>()
@@ -27,6 +26,8 @@ export class CharacterDetailStub {
 		.portrayed('Key')
 		.status('Alive')
 		.build();
-	}
+	};
 
-	getAllCharacters() {}	getCharacterById() {}}
+	getAllCharacters() {};
+	getCharacterById() {};
+}
