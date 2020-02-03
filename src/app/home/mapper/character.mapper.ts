@@ -29,7 +29,6 @@ export class CharacterMapper {
 					.portrayed(item.portrayed)
 					.occupation(item.occupation)
 					.build();
-			})
-
+			});
 	}
 }

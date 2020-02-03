@@ -1,20 +1,20 @@
-import { CharacterModel } from './../models/character.model';
-import { CharacterResponseModel } from './../integration/response/characters-response.model';
 import { Builder } from 'builder-pattern';
+
+import { CharacterModel } from './../models/character.model';
 
 
 
 export class HomeComponentStub {
 
 	static mockErrorResponse(): string {
-		return Builder<any>().message("MOCK-ERRO").build();
+		return 'MOCK-ERRO';
 	}
 	static mockDeadText(): string {
-		return "DEAD";
+		return 'DEAD';
 	}
 
 	static mockLoadingMessage(): string {
-		return "Loading..."
+		return 'Loading...';
 	}
 
 	static mockArrayCharacterModel(): Array<CharacterModel> {
@@ -26,6 +26,15 @@ export class HomeComponentStub {
 			.occupation(['Reader', 'Speaker'])
 			.portrayed('Key')
 			.status('Alive')
+			.build(),
+			Builder<CharacterModel>()
+			.char_id(1)
+			.img('')
+			.name('Jonathan')
+			.nickname('Josh')
+			.occupation(['Reading', 'Speaker'])
+			.portrayed('Key')
+			.status('Dead')
 			.build()];
 	}
 

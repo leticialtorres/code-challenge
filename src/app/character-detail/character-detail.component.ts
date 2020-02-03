@@ -13,7 +13,7 @@ import { HomeService } from '../home/services/home.service';
 })
 export class CharacterDetailComponent implements OnInit {
 	character: CharacterModel;
-	infoMessage: string = "";
+	infoMessage: string;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -22,7 +22,7 @@ export class CharacterDetailComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.setLoadingMessage()
+		this.setLoadingMessage();
 		this.route.paramMap
 		.pipe(switchMap(params => {
 			const id = String(params.get('id'));
@@ -46,6 +46,6 @@ export class CharacterDetailComponent implements OnInit {
 	}
 
 	setLoadingMessage(): void {
-		this.infoMessage = "Loading..."
+		this.infoMessage = 'Loading...';
 	}
 }

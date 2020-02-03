@@ -10,7 +10,7 @@ import { CharacterModel } from './models/character.model';
 })
 export class HomeComponent implements OnInit {
 	characters: Array<CharacterModel>;
-	infoMessage: string = "";
+	infoMessage: string;
 
 	constructor(
 		private service: HomeService
@@ -39,6 +39,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	setLoadingMessage(): void {
-		this.infoMessage = "Loading...";
+		this.infoMessage = 'Loading...';
 	}
 }

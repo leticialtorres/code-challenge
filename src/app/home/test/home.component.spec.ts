@@ -17,7 +17,7 @@ describe('HomeComponent =>', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			declarations: [ HomeComponent ],
-			imports:[
+			imports: [
 				HttpClientTestingModule,
 				RouterTestingModule,
 				BrowserDynamicTestingModule
@@ -26,11 +26,11 @@ describe('HomeComponent =>', () => {
 			]
 		})
 		.compileComponents()
-		.then(() =>{
+		.then( () => {
 			fixture = TestBed.createComponent(HomeComponent);
 			service = TestBed.get(HomeService);
 			component = fixture.componentInstance;
-		})
+		});
 	}));
 	describe('Given that this component to have been called => ', () => {
 		beforeEach(() => {
@@ -62,6 +62,9 @@ describe('HomeComponent =>', () => {
 			beforeEach(() => {
 				spyOn(service, 'getAllCharacters').and.returnValue(of(stub.mockArrayCharacterModel()));
 				component.getAllCaracters();
+			});
+			it('THEN the lenght of variable [characters] toBeGreaterThan 0' , () => {
+				expect(component.characters.length).toBeGreaterThan(0);
 			});
 			it('THEN this method return TRUE' , () => {
 				expect(component.isCharactersLoaded()).toBe(true);
