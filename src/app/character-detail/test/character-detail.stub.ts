@@ -1,14 +1,11 @@
 import { Builder } from 'builder-pattern';
+
 import { CharacterResponseModel } from './../../home/integration/response/characters-response.model';
 import { CharacterModel } from 'src/app/home/models/character.model';
 
 
 export class CharacterDetailStub {
-
-	getAllCharacters(){};
-	getCharacterById(){};
-
-    static mockCharacterResponseModel(): Array<CharacterResponseModel> {
+	static mockCharacterResponseModel(): Array<CharacterResponseModel> {
 		return [Builder<CharacterResponseModel>()
 		.char_id(1)
 		.img('')
@@ -30,5 +27,6 @@ export class CharacterDetailStub {
 		.portrayed('Key')
 		.status('Alive')
 		.build();
-    }
-}
+	}
+
+	getAllCharacters() {}	getCharacterById() {}}

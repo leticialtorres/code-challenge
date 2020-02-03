@@ -22,7 +22,7 @@ xdescribe('CharacterDetailComponent =>', () => {
   let service: HomeService;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+	TestBed.configureTestingModule({
 	  declarations: [
 			CharacterDetailComponent
 		],
@@ -40,9 +40,9 @@ xdescribe('CharacterDetailComponent =>', () => {
 			{ provide: HomeService, useClass: stub },
 			ChangeDetectorRef
 		]
-    })
+	})
 	.compileComponents()
-	.then(()=>{
+	.then(() => {
 		fixture = TestBed.createComponent(CharacterDetailComponent);
 		service = TestBed.get(HomeService);
 		component = fixture.componentInstance;
@@ -57,13 +57,13 @@ xdescribe('CharacterDetailComponent =>', () => {
 //   });
 
   it('component to be defined', () => {
-    expect(component).toBeDefined();
+	expect(component).toBeDefined();
   });
   describe('OnInit should be get characterById', () => {
-	beforeEach(() =>{
+	beforeEach(() => {
 
-		//spyOn(service, 'getCharacterById').and.callFake(() => of(stub.mockCharacterResponseModel()));
-		spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel())
+		// spyOn(service, 'getCharacterById').and.callFake(() => of(stub.mockCharacterResponseModel()));
+		spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel());
 
 	});
 	it('=> OnInit should be call method [getCharacterById] ', () => {
@@ -71,7 +71,7 @@ xdescribe('CharacterDetailComponent =>', () => {
 	});
   });
   describe('Given that call the method [isDead] =>', () => {
-	beforeEach(() =>{
+	beforeEach(() => {
 
 	});
 	it('then the result is a string ALIVE', () => {
@@ -79,7 +79,7 @@ xdescribe('CharacterDetailComponent =>', () => {
 	});
   });
   describe('Given that call the method [isDead] =>', () => {
-	beforeEach(() =>{
+	beforeEach(() => {
 
 	});
 	it('then the result is a string DECREASE', () => {
@@ -88,7 +88,7 @@ xdescribe('CharacterDetailComponent =>', () => {
   });
 
   describe('Given that call the method [characterDefined] =>', () => {
-	beforeEach(() =>{
+	beforeEach(() => {
 
 	});
 	it('then [character] NOT DEFINED return FALSE', () => {

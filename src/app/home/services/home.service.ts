@@ -9,7 +9,7 @@ import { CharacterModel } from '../models/character.model';
 import { CharacterMapper } from '../mapper/character.mapper';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class HomeService {
 
@@ -24,7 +24,7 @@ export class HomeService {
 	getCharacterById(id: string): Observable<CharacterModel> {
 		return this.rest.getCharactersById(id).pipe(
 			map(res => CharacterMapper.mapToCharacterModel(res.pop()))
-		)
+		);
 	}
 
 }

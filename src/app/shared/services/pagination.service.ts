@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { PaginationModel } from '../models/pagination.model';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class PaginationService {
-  private pageButtons: PaginationModel[];
-  constructor() { }
+	private pageButtons: PaginationModel[];
+	constructor() { }
 }

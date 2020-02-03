@@ -1,9 +1,9 @@
-import { CharacterResponseModel } from '../integration/response/characters-response.model';
-import { CharacterModel } from '../models/character.model';
 import { Builder } from 'builder-pattern';
 
-export class CharacterMapper {
+import { CharacterResponseModel } from '../integration/response/characters-response.model';
+import { CharacterModel } from '../models/character.model';
 
+export class CharacterMapper {
 	static mapToCharacterModel(response: CharacterResponseModel): CharacterModel {
 		return Builder<CharacterModel>()
 			.char_id(response.char_id)
@@ -14,8 +14,6 @@ export class CharacterMapper {
 			.nickname(response.nickname)
 			.portrayed(response.portrayed)
 			.occupation(response.occupation)
-			.build()
+			.build();
 	}
-
-
 }

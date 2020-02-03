@@ -11,44 +11,44 @@ import { CharacterMapper } from '../../mapper/character.mapper';
 describe('HomeService =>', () => {
 	let service: HomeService;
 	let restService: HomeRestService;
-  beforeEach(() => {
+ beforeEach(() => {
 	TestBed.configureTestingModule({
 		providers: [
 			HttpClientModule,
-			{ provide: HomeRestService, useValue: {getAllCharacters: {}, getCharactersById:{} } }
+			{ provide: HomeRestService, useValue: {getAllCharacters: {}, getCharactersById: {} } }
 		]
 		});
-		service = TestBed.get(HomeService)
-		restService = TestBed.get(HomeRestService);
+	service = TestBed.get(HomeService);
+	restService = TestBed.get(HomeRestService);
 	});
 
-	describe('Given that this service is call => ', ()=>{
+	describe('Given that this service is call => ', () => {
 		it('should be created', () => {
 			expect(service).toBeDefined();
 		});
 	});
 
-	describe('Given that the method [getCharacterById], is called => ', ()=>{
-		it('THEN [CharacterMapper.mapToCharacterModel] to have been called' ,() => {
+	describe('Given that the method [getCharacterById], is called => ', () => {
+		it('THEN [CharacterMapper.mapToCharacterModel] to have been called' , () => {
 			spyOn(restService, 'getCharactersById').and.callFake(() => of(stub.mockCharacterResponseModel()));
 			spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel());
-			service.getCharacterById("1").subscribe(sub =>{
+			service.getCharacterById('1').subscribe(sub => {
 				expect(CharacterMapper.mapToCharacterModel).toHaveBeenCalled();
 			});
 		});
-		it('THEN [restService.getCharactersById] to have been called' ,() => {
+		it('THEN [restService.getCharactersById] to have been called' , () => {
 			spyOn(restService, 'getCharactersById').and.callFake(() => of(stub.mockCharacterResponseModel()));
 			spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel());
-			service.getCharacterById("1").subscribe(sub =>{
+			service.getCharacterById('1').subscribe(sub => {
 				expect(restService.getCharactersById).toHaveBeenCalled();
 			});
 		});
-		it('THEN return a object of [CharacterModel]' ,() => {
+		it('THEN return a object of [CharacterModel]' , () => {
 			spyOn(restService, 'getCharactersById').and.callFake(() => of(stub.mockCharacterResponseModel()));
 			spyOn(CharacterMapper, 'mapToCharacterModel').and.returnValue(stub.mockCharacterModel());
-			service.getCharacterById("1").subscribe(sub =>{
+			service.getCharacterById('1').subscribe(sub => {
 				expect(sub).toEqual(stub.mockCharacterModel());
 			});
-		})
+		});
 	});
 });
