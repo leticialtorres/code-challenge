@@ -31,5 +31,5 @@ In this application I use a simple solution to list a limited character by API h
 * Lazy-Loading
 * Builder-Pattern
 * RxJS
-
+* Bootstrap
 
