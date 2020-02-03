@@ -1,11 +1,12 @@
-export class CharactersModel {
+export class CharacterModel {
   constructor(
     public char_id?: number,
-    public name?: number,
-    public birthday?: number,
-    public img?: number,
-    public status?: number,
-    public nickname?: number,
-    public portrayed?: number
+    public name?: string,
+    public birthday?: string,
+    public img?: string,
+    public status?: string,
+    public nickname?: string,
+    public portrayed?: string,
+    public occupation?: Array<string>
   ) { }
 }
