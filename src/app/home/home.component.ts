@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
-import { CharactersResponseModel } from "./integration/response/characters-response.model";
-import { HomeService } from "./../services/home.service";
+import { CharacterResponseModel } from "./integration/response/characters-response.model";
+import { HomeService } from "./services/home.service";
+import { CharacterMapper } from './mapper/character.mapper';
 
 @Component({
   selector: "app-home",
@@ -9,7 +10,7 @@ import { HomeService } from "./../services/home.service";
   styleUrls: ["./home.component.sass"]
 })
 export class HomeComponent implements OnInit {
-  caracters: Array<CharactersResponseModel>;
+  characters: Array<CharacterResponseModel>;
 
   constructor(private service: HomeService) {}
 
@@ -18,13 +19,16 @@ export class HomeComponent implements OnInit {
   }
 
   getAllCaracters(): void {
-    this.service.getAllCaracters().subscribe(res => {
-      this.caracters = res.slice(0, 4);
+    this.service.getAllCharacters().subscribe(res => {
+      this.characters = res.slice(0, 8);
     });
   }
 
-  getDetailCharacter(id: string): void {
-    
+  charactersLoaded(): boolean {
+	  return !!this.characters;
   }
 
+	isDead(dead: string): string {
+		return dead;
+	}
 }
